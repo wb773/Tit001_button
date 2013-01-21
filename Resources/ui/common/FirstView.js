@@ -17,23 +17,73 @@ function FirstView() {
 		alert(e.source.text);
 	});
 	
+	
+	//----------------------
+	//	通常のボタン
+	//----------------------
+	//ビュー（コンテナ）
+	var normalButtonView = Ti.UI.createView({
+		layout:"horizontal",
+		borderWidth:1,
+		height:Ti.UI.SIZE,
+		width:Ti.UI.SIZE,
+	})
+	self.add(normalButtonView);
+	//ボタン
 	var button = Ti.UI.createButton({
 		title:"button",
-		enabled:false,
+		backgroundImage:"image/icon01.png",
+	 	backgroundSelectedImage:"image/icon02.png",
+		backgroundDisabledImage:"image/icon03.png",
+		backgroundFocusedImage:"image/icon04.png",//Android専用のプロパティ
+		height:64,
+		width:64,
+		layout:"composite"
 	})
-	self.add(button);
+	normalButtonView.add(button);
 	button.addEventListener('click', function(e) {
 		alert(e.source.title);
 	});
-	
-	
-	var button2 = Ti.UI.createButton({
-		title:"button2"
+	//ラベル
+	var label = Ti.UI.createLabel({
+		text:"通常のボタン",
+		layout:"composite",
+		borderWidth:1,
+		width:Ti.UI.SIZE,
 	})
-	self.add(button2);
+	normalButtonView.add(label);
+	
+
+	//----------------------
+	//	無効化されたボタン
+	//----------------------
+	//ビュー（コンテナ）
+	var disableButtonView = Ti.UI.createView({
+		layout:"horizontal",
+		borderWidth:1,
+		height:Ti.UI.SIZE,
+	})
+	self.add(disableButtonView);
+	//ボタン
+	var button2 = Ti.UI.createButton({
+		title:"button2",
+		backgroundImage:"image/icon01.png",
+	 	backgroundSelectedImage:"image/icon02.png",
+		backgroundDisabledImage:"image/icon03.png",
+		backgroundFocusedImage:"image/icon04.png",//Android専用のプロパティ
+		height:64,
+		width:64,
+		enabled:false
+	})
+	disableButtonView.add(button2);
 	button2.addEventListener('click', function(e) {
 		alert(e.source.title);
 	});
+	//ラベル
+	var label = Ti.UI.createLabel({
+		text:"通常のボタン"
+	})
+	disableButtonView.add(label);
 	
 	return self;
 }
